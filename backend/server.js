@@ -17,8 +17,8 @@ app.get('/todos', (req, res) => {
 
 // Create a new todo
 app.post('/todos', (req, res) => {
-  const { title, done } = req.body;
-  const newTodo = { id: todos.length + 1, title, done };
+  const { title, description, done } = req.body;
+  const newTodo = { id: todos.length + 1, title, description, done };
   todos.push(newTodo);
   res.status(201).json(newTodo);
 });

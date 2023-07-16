@@ -1,19 +1,8 @@
-import { useEffect, useState } from 'react'
 import {Container} from '@mui/material';
 import './App.css'
 import TodoForm from '../Components/TodoForm'
-
-function useFetchTodos() {
-  const [todos, setTodos] = useState([])
-
-  useEffect(() => {
-    fetch('http://localhost:3000/todos',{method: "GET"})
-      .then(response => response.json())
-      .then(data => setTodos(data))
-  }, [])
-
-  return todos
-}
+import TodoList from '../Components/TodoList';
+import useFetchTodos from '../hooks/useFetchTodos'
 
 function App() {
 
@@ -21,8 +10,9 @@ function App() {
 
   return (
     <Container maxWidth="sm">
-      <TodoForm></TodoForm>
-      {todos.map((todo) => <p key={todo.id}>{todo.title} </p>)}
+      <TodoForm />
+
+      {todos.map((todo) => <TodoList todo={todo}/>)}
     </Container>
   )
 }
