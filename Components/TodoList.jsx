@@ -1,11 +1,14 @@
 import React from 'react'
+import {ListItemText, ListItem, Divider} from '@mui/material';
 
 function TodoList({todo}) {
   return (
-    <div key={todo.id}>
-        <p>{todo.title} </p>
-        <p>{todo.description}</p>
-    </div>
+    <>
+        <ListItem alignItems="flex-start" key={todo.id}>
+            <ListItemText primary={todo.title} secondary={todo.description} />
+        </ListItem>
+        <Divider variant="middle" component="li" />
+    </>
   )
 }
 

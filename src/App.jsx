@@ -1,4 +1,4 @@
-import {Container} from '@mui/material';
+import {Container, Box, List} from '@mui/material';
 import './App.css'
 import TodoForm from '../Components/TodoForm'
 import TodoList from '../Components/TodoList';
@@ -9,10 +9,13 @@ function App() {
   const todos = useFetchTodos()
 
   return (
-    <Container maxWidth="sm">
-      <TodoForm />
-
-      {todos.map((todo) => <TodoList todo={todo}/>)}
+    <Container maxWidth="xs">
+      <Box sx={{height: '100vh' }}>
+        <TodoForm />
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper',  }}>
+          {todos.map((todo) => <TodoList todo={todo}/>)}
+        </List>
+      </Box>
     </Container>
   )
 }
