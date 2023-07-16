@@ -1,4 +1,5 @@
 import {Button, TextField, Card, Box, CardActions, Typography} from '@mui/material';
+import usePostTodo from '../hooks/usePostTodo';
 
 function TodoForm() {
     return ( 
@@ -8,21 +9,7 @@ function TodoForm() {
                 <TextField id="title" label="Todo Title" variant="outlined" fullWidth/>
                 <TextField id="description" label="Description" variant="outlined" fullWidth/>
                 <CardActions>
-                    <Button variant="contained" style={{justifyContent: 'center'}} onClick={() => {
-                        let title = document.getElementById('title').value
-                        let description = document.getElementById('description').value
-
-                        fetch('http://localhost:3000/todos/', {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                title,
-                                description
-                            }),
-                            headers: {
-                                'Content-type': 'application/json'
-                            }
-                        })
-                    }}>Add</Button>
+                    <Button variant="contained" style={{justifyContent: 'center'}} onClick={usePostTodo}>Add</Button>
                 </CardActions>
             </Card>
         </>
